@@ -1,0 +1,14 @@
+{% include 'base/base.html' %}
+{% block header %}
+<h1 style="text-align: center; font-size: 30px; color: black; text-transform: uppercase">Cierre de Sesión</h1>
+{% endblock header %}
+
+{% block main %}
+<div style="text-align: center;">
+    <p style="text-align: center; font-size: 25px; color: black;">Has cerrado sesión</p>
+    <button style="padding: 10px 20px; border: 0; border-radius: 3px; background-color: #007BFF;" type="submit">
+        <a style="text-align: center; text-decoration: none; color: white;"
+           href="{% url 'index' %}">Nos vemos lapróxima!</a>
+    </button>
+</div>
+{% endblock main %}

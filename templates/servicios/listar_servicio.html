@@ -1,0 +1,160 @@
+<style>
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        font-size: 16px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table th,
+    table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    table td a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    table td a:hover {
+        text-decoration: underline;
+    }
+
+    a.agregar {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    a.agregar:hover {
+        background-color: #218838;
+    }
+
+    .btn-agregar {
+        background-color: #28a745;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-agregar:hover {
+        background-color: #218838;
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+
+        table,
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        table td {
+            text-align: right;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        table td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        a.agregar {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        a.btn-agregar {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+</style>
+
+{% include 'base/base.html' %}
+
+<h2>Lista de Servicios</h2>
+<table>
+    <tr>
+        <th>Producto</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    {% for servicio in servicios %}
+    <tr>
+        <td>{{ servicio.producto }}</td>
+        <td>{{ servicio.descripcion_producto }}</td>
+        <td>{{ servicio.precio }}</td>
+        <td>{{ servicio.estado }}</td>
+        <td>
+            <a href="{% url 'actualizar_servicio' servicio.id %}">Editar</a>
+            <a href="{% url 'eliminar_servicio' servicio.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No hay servicios disponibles.</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'crear_servicio' %}" class="btn-agregar">Pedir Servicio</a>

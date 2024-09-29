@@ -1,0 +1,70 @@
+<style>
+    /* Estilo para el título */
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Estilo para el formulario */
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilo para los inputs dentro del formulario */
+    form input,
+    form select,
+    form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    /* Botón de actualizar */
+    form button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 100%;
+    }
+
+    form button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    form button:active {
+        transform: scale(1);
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        form {
+            width: 90%;
+        }
+    }
+</style>
+
+
+<h2>Actualizar Usuario</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Cambios</button>
+</form>

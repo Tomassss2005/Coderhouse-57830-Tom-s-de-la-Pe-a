@@ -1,0 +1,90 @@
+<style>
+    div {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    div h2 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form p {
+        margin-bottom: 15px;
+    }
+
+    form p label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #555;
+    }
+
+    form p input,
+    form p textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+
+    form p input:focus,
+    form p textarea:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #218838;
+    }
+
+    @media (max-width: 768px) {
+        div {
+            max-width: 100%;
+            padding: 15px;
+        }
+
+        form button {
+            font-size: 14px;
+            padding: 12px;
+        }
+    }
+</style>
+
+{% include 'base/base.html' %}
+<div>
+    <h2>Crear Perfil</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Perfil</button>
+</div>
+</form>

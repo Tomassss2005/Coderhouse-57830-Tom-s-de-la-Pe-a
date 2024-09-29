@@ -1,0 +1,83 @@
+<style>
+
+    /*Estilos para h1*/
+    .h1{
+        text-align: center;
+        margin-top: 30px;
+        text-transform: uppercase;
+    }
+    /* Estilos para el encabezado */
+    .header {
+        text-align: center;
+        font-size: 24px;
+        margin: 20px 0;
+        color: #333;
+    }
+
+    /* Estilos para el formulario */
+    .form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+
+    /* Estilos para la tabla dentro del formulario */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 10px;
+
+    }
+
+    /* Estilos para el botón de envío */
+    .button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Estilos para mensajes de error o éxito */
+    .error-message {
+        color: red;
+        margin-top: 10px;
+    }
+
+    .success-message {
+        color: green;
+        margin-top: 10px;
+    }
+</style>
+
+
+
+{% include 'base/base.html' %}
+
+{% block header %}
+<h1 class="h1">Inicio de Sesión</h1>
+{% endblock header %}
+
+{% block main %}
+<form class="form" method="post">
+    {% csrf_token %}
+    <table class="table">
+        {{ form.as_table }}
+    </table>
+    <button class="button" type="submit">Iniciar Sesión</button>
+</form>
+{% endblock main %}

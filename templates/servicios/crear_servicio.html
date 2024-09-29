@@ -1,0 +1,99 @@
+<style>
+    /* General form styling */
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Title styling */
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Form field labels */
+    form label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    /* Form input fields */
+    form input[type="text"],
+    form input[type="file"],
+    form input[type="number"],
+    form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+        background-color: #fff;
+        resize: none;
+    }
+
+    /* Form input focus state */
+    form input[type="text"]:focus,
+    form input[type="file"]:focus,
+    form input[type="number"]:focus,
+    form textarea:focus,
+    form select:focus {
+        border-color: #5dade2;
+        outline: none;
+        box-shadow: 0 0 5px rgba(93, 173, 226, 0.5);
+    }
+
+    /* Submit button styling */
+    form button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #5dade2;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Submit button hover effect */
+    form button[type="submit"]:hover {
+        background-color: #2e86c1;
+    }
+
+    /* Additional spacing for better UX */
+    form .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+{% include 'base/base.html' %}
+<h2>Crear Servicio</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>

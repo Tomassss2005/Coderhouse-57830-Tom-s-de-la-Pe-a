@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Crea Con Nosotros{% endblock title %}</title>
+</head>
+
+<body>
+    <header>
+        {% block header %}
+        <nav style="text-align: center; display: flex; justify-content: space-around; margin-top: 30px; margin-bottom: 80px;">
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 10px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="{% url 'index' %}">Inicio</a>
+            </button>
+            {% if perfil.is_authenticated %}
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 14px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="{% url 'registro' %}">Registros</a>
+            </button>
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 10px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="{% url 'listar_pedido' %}">Pedidos</a>
+            </button>
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 10px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="{% url 'listar_perfil' %}">Perfiles</a>
+            </button>
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 10px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="{% url 'listar_servicio' %}">Servicios</a>
+            </button>
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 10px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="#">{{ perfil.username }}</a>
+            </button>
+            <form action="{% url 'cerrar-sesion' %}" method="post">
+                {% csrf_token %}
+                <button style="background-color: rgba(21, 20, 20, 0.617); color: white; border: 2px; border-radius: 3px; padding: 18px 60px; font-size: 18px;">Cerrar Sesión</button>
+            </form>
+            {% else %}
+            <button style="background-color: rgba(21, 20, 20, 0.617); border: 2px; border-radius: 3px; padding: 10px 60px;">
+                <a  style="color: rgb(255, 255, 255); font-size: 18px; text-decoration: none;"
+                    href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a>
+            </button>
+            {% endif %}
+        </nav>
+        {% endblock header %}
+    </header>
+
+    <main>
+        {% block main %}
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endblock main %}
+    </main>
+</body>
+
+</html>
